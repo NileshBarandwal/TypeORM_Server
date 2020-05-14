@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { LogUser } from '../loguser/loguser.entity'
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -22,4 +22,9 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+ 
+  @OneToOne(type => LogUser, loguser => loguser.id)
+  @JoinColumn()
+  loguser: User;
 }

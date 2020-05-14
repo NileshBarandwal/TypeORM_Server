@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne , JoinColumn } from 'typeorm';
+import { User } from '../user/user.entity';
 
 @Entity()
 export class LogUser {
@@ -22,4 +23,9 @@ export class LogUser {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @OneToOne(type => User, user => user.id)
+  @JoinColumn()
+  user: User;
+
 }

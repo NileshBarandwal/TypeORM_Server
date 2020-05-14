@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateLogUserDto } from '../../dto/create-loguser.dto';
 import { LogUser } from './loguser.entity';
+import { User } from '../user/user.entity';
 
 @Injectable()
 export class LogUsersService {
@@ -21,6 +22,7 @@ export class LogUsersService {
 
     return this.LogusersRepository.save(Loguser);
   }
+  
 
   async findAll(): Promise<LogUser[]> {
     return this.LogusersRepository.find();
